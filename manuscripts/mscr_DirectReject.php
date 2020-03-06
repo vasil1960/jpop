@@ -1,4 +1,3 @@
-<?php require_once('../Connections/localhost.php'); ?>
 <?php require_once('../Connections/localhost_i.php'); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
 <?php require_once('../webassist/mysqli/rsobj.php'); ?>
@@ -9,8 +8,6 @@ $rsDirectReject->setQuery("SELECT mnscrpts.mscrID, mnscrpts.mscrFullTitle, mnscr
 $rsDirectReject->bindParam("i", "".($_GET['mnscrpt_id'])  ."", "-1"); //colname
 $rsDirectReject->execute();
 ?>
-<?php require_once("../webassist/email/WA_Email.php"); ?>
-<?php require_once("../webassist/email/mailformatting_php.php"); ?>
 <?php
 if (isset($_POST["button"]) || isset($_POST["button_x"])) {
   $UpdateQuery = new WA_MySQLi_Query($localhost_i);

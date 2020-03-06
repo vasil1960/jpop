@@ -1,1 +1,1 @@
-<progress total="3" current="3" remaining="2" />
+<progress total="2" current="2" remaining="0" />

@@ -1,5 +1,6 @@
-<?php require_once('../Connections/localhost.php'); ?>
+<?php require_once('../Connections/localhost_i.php'); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
+<?php require_once('../webassist/mysqli/rsobj.php'); ?>
 <?php
 if (!WA_Auth_RulePasses("Autors_Reviewer_and_Editors")){
 	WA_Auth_RestrictAccess("users_LogIn.php?checkout=1");
@@ -39,36 +40,38 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-mysql_select_db($database_localhost, $localhost);
-$query_rsUsers = "SELECT users.UserID,users.UserEmail, users.UserFirstName, users.UserLastName, users.UserCity, DATE_FORMAT(users.UserRegistrationDate,'%d.%m.%Y') as DateRegister, users.UserCountry, status.statusName FROM users, status WHERE status.statusUserLave=users.UserLavel ORDER BY users.UserID DESC";
-$rsUsers = mysql_query($query_rsUsers, $localhost) or die(mysql_error());
-$row_rsUsers = mysql_fetch_assoc($rsUsers);
-$totalRows_rsUsers = mysql_num_rows($rsUsers);
-$query_rsUsers = "SELECT users.UserID,users.UserEmail, users.UserFirstName, users.UserLastName, users.UserCity, DATE_FORMAT(users.UserRegistrationDate,'%d.%m.%Y') as DateRegister, users.UserCountry, status.statusName FROM users, status WHERE status.statusUserLave=users.UserLavel ORDER BY users.UserID DESC";
-$rsUsers = mysql_query($query_rsUsers, $localhost) or die(mysql_error());
-$row_rsUsers = mysql_fetch_assoc($rsUsers);
-$totalRows_rsUsers = mysql_num_rows($rsUsers);
-
-$maxRows_rsUsersCount = 10;
-$pageNum_rsUsersCount = 0;
-if (isset($_GET['pageNum_rsUsersCount'])) {
-  $pageNum_rsUsersCount = $_GET['pageNum_rsUsersCount'];
-}
-$startRow_rsUsersCount = $pageNum_rsUsersCount * $maxRows_rsUsersCount;
-
-mysql_select_db($database_localhost, $localhost);
-$query_rsUsersCount = "SELECT status.statusName,  COUNT(users.UserLavel) AS UsersCout, status.statusUserLave FROM users, status WHERE status.statusUserLave=users.UserLavel GROUP BY users.UserLavel ORDER BY status.statusUserLave DESC";
-$query_limit_rsUsersCount = sprintf("%s LIMIT %d, %d", $query_rsUsersCount, $startRow_rsUsersCount, $maxRows_rsUsersCount);
-$rsUsersCount = mysql_query($query_limit_rsUsersCount, $localhost) or die(mysql_error());
-$row_rsUsersCount = mysql_fetch_assoc($rsUsersCount);
-
-if (isset($_GET['totalRows_rsUsersCount'])) {
-  $totalRows_rsUsersCount = $_GET['totalRows_rsUsersCount'];
-} else {
-  $all_rsUsersCount = mysql_query($query_rsUsersCount, $localhost);
-  $totalRows_rsUsersCount = mysql_num_rows($all_rsUsersCount);
-}
-$totalPages_rsUsersCount = ceil($totalRows_rsUsersCount/$maxRows_rsUsersCount)-1;
+?>
+<?php
+$rsUsers = new WA_MySQLi_RS("rsUsers",$localhost_i,0);
+$rsUsers->setQuery("SELECT users.UserID,users.UserEmail, users.UserFirstName, users.UserLastName, users.UserCity, DATE_FORMAT(users.UserRegistrationDate,'%d.%m.%Y') as DateRegister, users.UserCountry, status.statusName FROM users, status WHERE status.statusUserLave=users.UserLavel ORDER BY users.UserID DESC");
+$rsUsers->execute();
+?>
+<?php
+//$query_rsUsers = "SELECT users.UserID,users.UserEmail, users.UserFirstName, users.UserLastName, users.UserCity, DATE_FORMAT(users.UserRegistrationDate,'%d.%m.%Y') as DateRegister, users.UserCountry, status.statusName FROM users, status WHERE status.statusUserLave=users.UserLavel ORDER BY users.UserID DESC";
+//$rsUsers = mysql_query($query_rsUsers, $localhost) or die(mysql_error());
+//$row_rsUsers = mysql_fetch_assoc($rsUsers);
+//$rsUsers->TotalRows = mysql_num_rows($rsUsers);
+//
+//$maxRows_rsUsersCount = 10;
+//$pageNum_rsUsersCount = 0;
+//if (isset($_GET['pageNum_rsUsersCount'])) {
+//  $pageNum_rsUsersCount = $_GET['pageNum_rsUsersCount'];
+//}
+//$startRow_rsUsersCount = $pageNum_rsUsersCount * $maxRows_rsUsersCount;
+//
+//mysql_select_db($database_localhost, $localhost);
+//$query_rsUsersCount = "SELECT status.statusName,  COUNT(users.UserLavel) AS UsersCout, status.statusUserLave FROM users, status WHERE status.statusUserLave=users.UserLavel GROUP BY users.UserLavel ORDER BY status.statusUserLave DESC";
+//$query_limit_rsUsersCount = sprintf("%s LIMIT %d, %d", $query_rsUsersCount, $startRow_rsUsersCount, $maxRows_rsUsersCount);
+//$rsUsersCount = mysql_query($query_limit_rsUsersCount, $localhost) or die(mysql_error());
+//$row_rsUsersCount = mysql_fetch_assoc($rsUsersCount);
+//
+//if (isset($_GET['totalRows_rsUsersCount'])) {
+//  $rsUsers->TotalRowsCount = $_GET['totalRows_rsUsersCount'];
+//} else {
+//  $all_rsUsersCount = mysql_query($query_rsUsersCount, $localhost);
+//  $rsUsers->TotalRowsCount = mysql_num_rows($all_rsUsersCount);
+//}
+//$totalPages_rsUsersCount = ceil($rsUsers->TotalRowsCount/$maxRows_rsUsersCount)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/main.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -196,7 +199,7 @@ a:active {
     </div>
     
 <!-- InstanceBeginEditable name="LeftSidebar" --><!-- InstanceEndEditable --></div>
-    <div id="content"><!-- InstanceBeginEditable name="mainContent" --> <span class="title">All Users (Editors, Authors and Reviewers) - <?php echo $totalRows_rsUsers ?></span>
+    <div id="content"><!-- InstanceBeginEditable name="mainContent" --> <span class="title">All Users (Editors, Authors and Reviewers) - <?php echo $rsUsers->TotalRows ?></span>
         <div id="mainContent">
           <div id="form1_ProgressWrapper">
             <form id="form1" name="form1" method="post" action="">
@@ -205,10 +208,8 @@ a:active {
                   <td height="20" colspan="7" align="right">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td height="20" colspan="7" align="right"><span class="bold"><a href="users_Index.php">All Users - <?php echo $totalRows_rsUsers ?></a></span><br />
-                    <?php do { ?>
-                    <span class="bold"> <a href="users_Index_Lavel.php?lavel=<?php echo $row_rsUsersCount['statusUserLave']; ?>&amp;usertype=<?php echo $row_rsUsersCount['statusName']; ?>&amp;userscount=<?php echo $row_rsUsersCount['UsersCout']; ?>"><?php echo $row_rsUsersCount['statusName']; ?>s - <?php echo $row_rsUsersCount['UsersCout']; ?></a></span><br />
-                    <?php } while ($row_rsUsersCount = mysql_fetch_assoc($rsUsersCount)); ?></td>
+                  <td height="20" colspan="7" align="right"><span class="bold"><a href="users_Index.php">All Users - <?php echo $rsUsers->TotalRows ?></a></span><br />
+                    
                 </tr>
                 <tr>
                   <td height="20" align="right">&nbsp;</td>
@@ -219,17 +220,27 @@ a:active {
                   <td align="left">&nbsp;</td>
                   <td align="left">&nbsp;</td>
                 </tr>
-                <?php do { ?>
+                <?php
+$wa_startindex = 0;
+while(!$rsUsers->atEnd()) {
+  $wa_startindex = $rsUsers->Index;
+?>
                 <tr>
-                  <td width="3%" height="20" align="right" valign="top"><?php echo $row_rsUsers['UserID']; ?>. </td>
-                  <td width="23%" align="left" valign="top"><a href="../profile/profile_Users.php?profile=<?php echo $row_rsUsers['UserID']; ?>"><?php echo $row_rsUsers['UserEmail']; ?></a></td>
-                  <td width="21%" align="left" valign="top"><?php echo $row_rsUsers['UserFirstName']; ?> <?php echo $row_rsUsers['UserLastName']; ?></td>
-                  <td width="31%" align="left" valign="top"><?php echo $row_rsUsers['UserCountry']; ?>, <?php echo $row_rsUsers['UserCity']; ?></td>
-                  <td width="9%" align="left" valign="top"><?php echo $row_rsUsers['DateRegister']; ?></td>
-                  <td width="7%" align="left" valign="top"><?php echo $row_rsUsers['statusName']; ?></td>
-                  <td width="5%" align="right" valign="top"><a href="users_ChangeStatus.php?update=<?php echo $row_rsUsers['UserID']; ?>">status</a></td>
+                  <td width="3%" height="20" align="right" valign="top"><?php echo($rsUsers->getColumnVal("UserID")); ?>. </td>
+                  <td width="23%" align="left" valign="top"><?php echo($rsUsers->getColumnVal("UserEmail")); ?></td>
+                  <td width="21%" align="left" valign="top"><?php echo($rsUsers->getColumnVal("UserFirstName")); ?> <?php echo($rsUsers->getColumnVal("UserLastName")); ?></td>
+                  <td width="31%" align="left" valign="top"><?php echo($rsUsers->getColumnVal("UserCountry")); ?>, <?php echo($rsUsers->getColumnVal("UserCity")); ?></td>
+                  <td width="9%" align="left" valign="top"><?php echo($rsUsers->getColumnVal("DateRegister")); ?></td>
+                  <td width="7%" align="left" valign="top"><?php echo($rsUsers->getColumnVal("statusName")); ?></td>
+                  <td width="5%" align="right" valign="top"><a href="users_ChangeStatus.php?update=<?php echo $rsUsers->getColumnVal('UserID'); ?>">status</a></td>
                 </tr>
-                <?php } while ($row_rsUsers = mysql_fetch_assoc($rsUsers)); ?>
+                <?php
+  $rsUsers->moveNext();
+}
+$rsUsers->moveFirst(); //return RS to first record
+unset($wa_startindex);
+unset($wa_repeatcount);
+?>
               </table>
               <p>&nbsp;</p>
             </form>
@@ -250,7 +261,5 @@ WADFP_SetProgressToForm('form1', 'form1_ProgressMessageWrapper', WADFP_Theme_Opt
 </body>
 <!-- InstanceEnd --></html>
 <?php
-mysql_free_result($rsUsers);
-
 mysql_free_result($rsUsersCount);
 ?>

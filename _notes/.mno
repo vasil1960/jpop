@@ -1,23 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="MM_Session_Count" value="15" />
-	<infoitem key="MM_Session1" value="UserPassword" />
-	<infoitem key="MM_SecurityAssist1" value="Random Password" />
-	<infoitem key="MM_SecurityAssist_Count" value="1" />
-	<infoitem key="MM_Session2" value="newPassword" />
-	<infoitem key="MM_Session3" value="users_UserID" />
-	<infoitem key="MM_Session4" value="mnscrpts_mscrID" />
-	<infoitem key="MM_Session5" value="UserID" />
-	<infoitem key="MM_Session6" value="UserEmail" />
-	<infoitem key="MM_Session7" value="UserName" />
-	<infoitem key="MM_Session8" value="UserFirstName" />
-	<infoitem key="MM_Session9" value="UserLastName" />
-	<infoitem key="MM_Session10" value="UserCity" />
-	<infoitem key="MM_Session11" value="UserLavel" />
-	<infoitem key="MM_Session12" value="publised" />
-	<infoitem key="MM_WA_Auth_Count" value="1" />
-	<infoitem key="MM_Session13" value="pub_submit" />
-	<infoitem key="MM_Session14" value="log_logID" />
-	<infoitem key="MM_WA_Auth1" value="LoggedIn" />
-	<infoitem key="MM_Session15" value="randomConfirm" />
-</info>
+﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="MM_Session_Count" value="17" />	<infoitem key="MM_Session1" value="UserPassword" />	<infoitem key="MM_SecurityAssist1" value="Random Password" />	<infoitem key="MM_SecurityAssist_Count" value="1" />	<infoitem key="MM_Session2" value="newPassword" />	<infoitem key="MM_Session3" value="users_UserID" />	<infoitem key="MM_Session4" value="mnscrpts_mscrID" />	<infoitem key="MM_Session5" value="UserID" />	<infoitem key="MM_Session6" value="UserEmail" />	<infoitem key="MM_Session7" value="UserName" />	<infoitem key="MM_Session8" value="UserFirstName" />	<infoitem key="MM_Session9" value="UserLastName" />	<infoitem key="MM_Session10" value="UserCity" />	<infoitem key="MM_Session11" value="UserLavel" />	<infoitem key="MM_Session12" value="publised" />	<infoitem key="MM_WA_Auth_Count" value="1" />	<infoitem key="MM_Session13" value="pub_submit" />	<infoitem key="MM_Session14" value="randomConfirm" />	<infoitem key="MM_WA_Auth1" value="LoggedIn" />	<infoitem key="MM_Session15" value="log_logID" />	<infoitem key="MM_Session16" value="searchlog" />	<infoitem key="MM_Session17" value="searchresult" /></info>

@@ -1,42 +1,12 @@
-<?php require_once('../Connections/localhost.php'); ?>
+<?php require_once('../Connections/localhost_i.php'); ?>
 <?php require_once( "../webassist/file_manipulation/helperphp.php" ); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
-<?php require_once("../webassist/database_management/wa_appbuilder_php.php"); ?>
+<?php require_once('../webassist/mysqli/rsobj.php'); ?>
+<?php require_once('../webassist/mysqli/queryobj.php'); ?>
 <?php require("../my_functions/my_php_functions.php"); ?>
 <?php
 if (!WA_Auth_RulePasses("Editors")){
 	WA_Auth_RestrictAccess("../users/users_LogIn.php");
-}
-
-if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
-
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
 }
 ?>
 <?php
@@ -44,45 +14,26 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 //$_POST = array_map("trim", $_POST);
 //print_r($_POST);
 /////////////////////////////////////////////////
-$colname_rsSearch = "-1";
-if (isset($_POST['txtSearch'])) {
-  $colname_rsSearch = $_POST['txtSearch'];
-}
-mysql_select_db($database_localhost, $localhost);
-$query_rsSearch = sprintf("SELECT mnscrpts.mscrID, mnscrpts.mscrAutorID,  mnscrpts.mscrFullTitle, mnscrpts.mscrAbstract, mnscrpts.mscrKeywords, users.UserID, users.UserEmail,CONCAT_WS(' ', users.UserFirstName, users.UserLastName) AS FullAuthorName, users.UserLastName, mnscrpts.mscrCode, mnscrpts.mscrUpldDate, mnscrpts.mscrCodeU, mnscrpts.mscrCoverLeter, mnscrpts.mscrRecommendation_1, mnscrpts.mscrRecommendation_2, mnscrpts.mscrRecommendation_3 FROM mnscrpts INNER JOIN users ON mnscrpts.mscrAutorID = users.UserID WHERE CONCAT(UPPER(users.UserFirstName), ' ',UPPER(users.UserLastName)) LIKE UPPER(%s) OR  UPPER(users.UserFirstName) LIKE UPPER(%s) OR  UPPER(users.UserLastName) LIKE UPPER(%s) OR  UPPER(mnscrpts.mscrAbstract) LIKE UPPER(%s) OR   UPPER(mnscrpts.mscrFullTitle) LIKE UPPER(%s) OR   UPPER(mnscrpts.mscrCoverLeter) LIKE UPPER(%s) OR   UPPER(mnscrpts.mscrKeywords) LIKE UPPER(%s) ", GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"),GetSQLValueString("%" . $colname_rsSearch . "%", "text"));
-$rsSearch = mysql_query($query_rsSearch, $localhost) or die(mysql_error());
-$row_rsSearch = mysql_fetch_assoc($rsSearch);
-$totalRows_rsSearch = mysql_num_rows($rsSearch);?>
-<?php 
-// WA DataAssist Insert
-if (!($totalRows_rsSearch == 0)) // Trigger
-{
-  $WA_connection = $localhost;
-  $WA_table = "log";
-  $WA_sessionName = "searchresult";
-  $WA_redirectURL = "";
-  if (function_exists("rel2abs")) $WA_redirectURL = $WA_redirectURL?rel2abs($WA_redirectURL,dirname(__FILE__)):"";
-  $WA_keepQueryString = false;
-  $WA_fieldNamesStr = "logUser|logIP|logContent";
-  $WA_fieldValuesStr = "".$_SESSION['UserFirstName']  ." ".$_SESSION['UserEmail']  ."" . $WA_AB_Split . "".((isset($_SERVER["REMOTE_ADDR"]))?$_SERVER["REMOTE_ADDR"]:"")  ."" . $WA_AB_Split . "Open search result site to show result";
-  $WA_columnTypesStr = "',none,''|',none,''|',none,''";
-  $WA_fieldNames = explode("|", $WA_fieldNamesStr);
-  $WA_fieldValues = explode($WA_AB_Split, $WA_fieldValuesStr);
-  $WA_columns = explode("|", $WA_columnTypesStr);
-  $WA_connectionDB = $database_localhost;
-  mysql_select_db($WA_connectionDB, $WA_connection);
-  @session_start();
-  $insertParamsObj = WA_AB_generateInsertParams($WA_fieldNames, $WA_columns, $WA_fieldValues, -1);
-  $WA_Sql = "INSERT INTO `" . $WA_table . "` (" . $insertParamsObj->WA_tableValues . ") VALUES (" . $insertParamsObj->WA_dbValues . ")";
-  $MM_editCmd = mysql_query($WA_Sql, $WA_connection) or die(mysql_error());
-  $_SESSION[$WA_sessionName] = mysql_insert_id($WA_connection);
-  if ($WA_redirectURL != "")  {
-    $WA_redirectURL = str_replace("[Insert_ID]",$_SESSION[$WA_sessionName],$WA_redirectURL);
-    if ($WA_keepQueryString && $WA_redirectURL != "" && isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "" && sizeof($_POST) > 0) {
-      $WA_redirectURL .= ((strpos($WA_redirectURL, '?') === false)?"?":"&").$_SERVER["QUERY_STRING"];
-    }
-    header("Location: ".$WA_redirectURL);
-  }
+?>
+<?php
+$rsSearch = new WA_MySQLi_RS("rsSearch",$localhost_i,0);
+$rsSearch->setQuery("SELECT mnscrpts.mscrID, mnscrpts.mscrAutorID,  mnscrpts.mscrFullTitle, mnscrpts.mscrAbstract, mnscrpts.mscrKeywords, users.UserID, users.UserEmail,CONCAT_WS(' ', users.UserFirstName, users.UserLastName) AS FullAuthorName, users.UserLastName, mnscrpts.mscrCode, mnscrpts.mscrUpldDate, mnscrpts.mscrCodeU, mnscrpts.mscrCoverLeter, mnscrpts.mscrRecommendation_1, mnscrpts.mscrRecommendation_2, mnscrpts.mscrRecommendation_3 FROM mnscrpts INNER JOIN users ON mnscrpts.mscrAutorID = users.UserID WHERE CONCAT(UPPER(users.UserFirstName), ' ',UPPER(users.UserLastName)) LIKE UPPER(?) OR  UPPER(users.UserFirstName) LIKE UPPER(?) OR  UPPER(users.UserLastName) LIKE UPPER(?) OR  UPPER(mnscrpts.mscrAbstract) LIKE UPPER(?) OR   UPPER(mnscrpts.mscrFullTitle) LIKE UPPER(?) OR   UPPER(mnscrpts.mscrCoverLeter) LIKE UPPER(?) OR   UPPER(mnscrpts.mscrKeywords) LIKE UPPER(?) ");
+$rsSearch->bindParam("s", "".($_POST['txtSearch'])  ."", "-1"); //colname
+$rsSearch->execute();
+?>
+<?php
+if (!($rsSearch->TotalRows == 0)) {
+  $InsertQuery = new WA_MySQLi_Query($localhost_i);
+  $InsertQuery->Action = "insert";
+  $InsertQuery->Table = "log";
+  $InsertQuery->bindColumn("logUser", "s", "".$_SESSION['UserFirstName']  ." ".$_SESSION['UserEmail']  ."", "WA_BLANK");
+  $InsertQuery->bindColumn("logIP", "s", "".((isset($_SERVER["REMOTE_ADDR"]))?$_SERVER["REMOTE_ADDR"]:"")  ."", "WA_BLANK");
+  $InsertQuery->bindColumn("logContent", "s", "Open search result site to show result", "WA_BLANK");
+  $InsertQuery->saveInSession("searchresult");
+  $InsertQuery->execute();
+  $InsertGoTo = "";
+  if (function_exists("rel2abs")) $InsertGoTo = $InsertGoTo?rel2abs($InsertGoTo,dirname(__FILE__)):"";
+  $InsertQuery->redirect($InsertGoTo);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -222,46 +173,53 @@ a:active {
        
            <span class="title">Search Result</span><hr />
            <p><a href="javascript:history.back()">[ Back ]</a></p>
-           <?php do { ?>
-            <?php if ($totalRows_rsSearch > 0) { // Show if recordset not empty ?>
+           <?php
+$wa_startindex = 0;
+while(!$rsSearch->atEnd()) {
+  $wa_startindex = $rsSearch->Index;
+?>
+            <?php if ($rsSearch->TotalRows > 0) { // Show if mysqli recordset not empty ?>
               <div id="divSearchResult">
                 <table width="100%" border="0" cellspacing="1" cellpadding="0">
   <tr>
-    <td width="11%" rowspan="2" align="center"  bgcolor="<?php echo colorRecommendation($row_rsSearch['mscrRecommendation_1'],$row_rsSearch['mscrRecommendation_2'],$row_rsSearch['mscrRecommendation_3']); ?>"><a href="../manuscripts/mscr_Status.php?manuscript=<?php echo $row_rsSearch['mscrID']; ?>"><?php echo $row_rsSearch['mscrCodeU']; ?></a></td>
-    <td width="73%" rowspan="2" bgcolor="#DFDFDF"><?php echo $row_rsSearch['mscrFullTitle']; ?></td>
-    <td width="16%" align="center" bgcolor="#DFDFDF"><?php echo $row_rsSearch['FullAuthorName']; ?></td>
+    <td width="11%" rowspan="2" align="center"  bgcolor="<?php echo colorRecommendation($rsSearch->getColumnVal('mscrRecommendation_1'),$rsSearch->getColumnVal('mscrRecommendation_2'),$rsSearch->getColumnVal('mscrRecommendation_3')); ?>"><a href="../manuscripts/mscr_Status.php?manuscript=<?php echo $rsSearch->getColumnVal('mscrID'); ?>"><?php echo $rsSearch->getColumnVal('mscrCodeU'); ?></a></td>
+    <td width="73%" rowspan="2" bgcolor="#DFDFDF"><?php echo $rsSearch->getColumnVal('mscrFullTitle'); ?></td>
+    <td width="16%" align="center" bgcolor="#DFDFDF"><?php echo $rsSearch->getColumnVal('FullAuthorName'); ?></td>
     </tr>
   <tr>
-    <td align="center" bgcolor="#DFDFDF"><?php echo $row_rsSearch['mscrUpldDate']; ?></td>
+    <td align="center" bgcolor="#DFDFDF"><?php echo $rsSearch->getColumnVal('mscrUpldDate'); ?></td>
   </tr>
   <tr>
     <td align="right" valign="top"><strong>Cover Letter:</strong></td>
-    <td colspan="2"><?php echo $row_rsSearch['mscrCoverLeter']; ?></td>
+    <td colspan="2"><?php echo $rsSearch->getColumnVal('mscrCoverLeter'); ?></td>
     </tr>
   <tr>
     <td align="right" valign="top"><strong>Abstract:</strong></td>
-    <td colspan="2"><?php echo $row_rsSearch['mscrAbstract']; ?></td>
+    <td colspan="2"><?php echo $rsSearch->getColumnVal('mscrAbstract'); ?></td>
     </tr>
   <tr>
     <td align="right" valign="top"><strong>Keywords:</strong></td>
-    <td colspan="2"><?php echo $row_rsSearch['mscrKeywords']; ?></td>
+    <td colspan="2"><?php echo $rsSearch->getColumnVal('mscrKeywords'); ?></td>
     </tr>
                 </table>
 
               </div>
-              <?php } // Show if recordset not empty ?>
-<?php } while ($row_rsSearch = mysql_fetch_assoc($rsSearch)); ?>
+              <?php } // Show if mysqli recordset not empty ?>
+<?php
+  $rsSearch->moveNext();
+}
+$rsSearch->moveFirst(); //return RS to first record
+unset($wa_startindex);
+unset($wa_repeatcount);
+?>
  <p><a href="javascript:history.back()">[ Back ]</a></p>
       </div>
-      <?php if ($totalRows_rsSearch == 0) { // Show if recordset empty ?>
+      <?php if ($rsSearch->TotalRows == 0) { // Show if mysqli recordset empty ?>
         <div class="validation_text" id="divNoSearchResult ">No search result</div>
-        <?php } // Show if recordset empty ?>
+        <?php } // Show if mysqli recordset empty ?>
     <!-- InstanceEndEditable --></div>
   </div>
 <div id="footer">Journal-POP &copy; 2011- 2015</div>
 </div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($rsSearch);
-?>

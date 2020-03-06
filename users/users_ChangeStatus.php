@@ -1,7 +1,7 @@
-<?php require_once('../Connections/localhost.php'); ?>
-<?php require_once('../Connections/localhost.php'); ?>
+<?php require_once('../Connections/localhost_i.php'); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
-<?php require_once("../webassist/database_management/wa_appbuilder_php.php"); ?>
+<?php require_once('../webassist/mysqli/rsobj.php'); ?>
+<?php require_once('../webassist/mysqli/queryobj.php'); ?>
 <?php 
 if (!WA_Auth_RulePasses("Autors_Reviewer_and_Editors")){
 	WA_Auth_RestrictAccess("users_LogIn.php?checkout=1");
@@ -12,98 +12,29 @@ if ("" == "")     {
   $_SESSION["randomConfirm"] = "".$_SESSION['randomConfirm']  ."";
 }
 ?>
-<?php 
-// WA DataAssist Update
-if ($_SERVER["REQUEST_METHOD"] == "POST") // Trigger
-{
-  $WA_connection = $localhost;
-  $WA_table = "users";
-  $WA_redirectURL = "users_Index.php";
-  if (function_exists("rel2abs")) $WA_redirectURL = $WA_redirectURL?rel2abs($WA_redirectURL,dirname(__FILE__)):"";
-  $WA_keepQueryString = false;
-  $WA_indexField = "UserID";
-  $WA_fieldNamesStr = "UserLavel";
-  $WA_fieldValuesStr = "".((isset($_POST["txtStatus"]))?$_POST["txtStatus"]:"")  ."";
-  $WA_columnTypesStr = "none,none,NULL";
-  $WA_comparisonStr = "=";
-  $WA_fieldNames = explode("|", $WA_fieldNamesStr);
-  $WA_fieldValues = explode($WA_AB_Split, $WA_fieldValuesStr);
-  $WA_columns = explode("|", $WA_columnTypesStr);
-  
-  $WA_where_fieldValuesStr = "".((isset($_POST["hiddenUserID"]))?$_POST["hiddenUserID"]:"")  ."";
-  $WA_where_columnTypesStr = "none,none,NULL";
-  $WA_where_comparisonStr = "=";
-  $WA_where_fieldNames = explode("|", $WA_indexField);
-  $WA_where_fieldValues = explode($WA_AB_Split, $WA_where_fieldValuesStr);
-  $WA_where_columns = explode("|", $WA_where_columnTypesStr);
-  $WA_where_comparisons = explode("|", $WA_where_comparisonStr);
-  
-  $WA_connectionDB = $database_localhost;
-  mysql_select_db($WA_connectionDB, $WA_connection);
-  @session_start();
-  $updateParamsObj = WA_AB_generateInsertParams($WA_fieldNames, $WA_columns, $WA_fieldValues, -1);
-  $WhereObj = WA_AB_generateWhereClause($WA_where_fieldNames, $WA_where_columns, $WA_where_fieldValues,  $WA_where_comparisons );
-  $WA_Sql = "UPDATE `" . $WA_table . "` SET " . $updateParamsObj->WA_setValues . " WHERE " . $WhereObj->sqlWhereClause . "";
-  $MM_editCmd = mysql_query($WA_Sql, $WA_connection) or die(mysql_error());
-  if ($WA_redirectURL != "")  {
-    if ($WA_keepQueryString && $WA_redirectURL != "" && isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "" && sizeof($_POST) > 0) {
-      $WA_redirectURL .= ((strpos($WA_redirectURL, '?') === false)?"?":"&").$_SERVER["QUERY_STRING"];
-    }
-    header("Location: ".$WA_redirectURL);
-  }
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $UpdateQuery = new WA_MySQLi_Query($localhost_i);
+  $UpdateQuery->Action = "update";
+  $UpdateQuery->Table = "users";
+  $UpdateQuery->bindColumn("UserLavel", "d", "".((isset($_POST["txtStatus"]))?$_POST["txtStatus"]:"")  ."", "WA_BLANK");
+  $UpdateQuery->addFilter("UserID", "=", "d", "".((isset($_POST["hiddenUserID"]))?$_POST["hiddenUserID"]:"")  ."");
+  $UpdateQuery->execute();
+  $UpdateGoTo = "users_Index.php";
+  if (function_exists("rel2abs")) $UpdateGoTo = $UpdateGoTo?rel2abs($UpdateGoTo,dirname(__FILE__)):"";
+  $UpdateQuery->redirect($UpdateGoTo);
 }
 ?>
 <?php
-
-
-
-if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
-
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
-}
+$rsStatus = new WA_MySQLi_RS("rsStatus",$localhost_i,1);
+$rsStatus->setQuery("SELECT status.statusID, status.statusName FROM status");
+$rsStatus->execute();
 ?>
 <?php
-mysql_select_db($database_localhost, $localhost);
-$query_rsStatus = "SELECT status.statusID, status.statusName FROM status";
-$rsStatus = mysql_query($query_rsStatus, $localhost) or die(mysql_error());
-$row_rsStatus = mysql_fetch_assoc($rsStatus);
-$totalRows_rsStatus = mysql_num_rows($rsStatus);
-
-$colname_rsChangeRsersStatus = "-1";
-if (isset($_GET['update'])) {
-  $colname_rsChangeRsersStatus = (get_magic_quotes_gpc()) ? $_GET['update'] : addslashes($_GET['update']);
-}
-mysql_select_db($database_localhost, $localhost);
-$query_rsChangeRsersStatus = sprintf("SELECT * FROM users WHERE users.UserID=%s", GetSQLValueString($colname_rsChangeRsersStatus, "int"));
-$rsChangeRsersStatus = mysql_query($query_rsChangeRsersStatus, $localhost) or die(mysql_error());
-$row_rsChangeRsersStatus = mysql_fetch_assoc($rsChangeRsersStatus);
-$totalRows_rsChangeRsersStatus = mysql_num_rows($rsChangeRsersStatus);
+$rsChangeRsersStatus = new WA_MySQLi_RS("rsChangeRsersStatus",$localhost_i,1);
+$rsChangeRsersStatus->setQuery("SELECT * FROM users WHERE users.UserID=?");
+$rsChangeRsersStatus->bindParam("i", "".($_GET['update'])  ."", "-1"); //colname
+$rsChangeRsersStatus->execute();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/main.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -243,25 +174,22 @@ a:active {
     <div id="mainContent"><form action="" method="post">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td colspan="5"><input name="hiddenUserID" type="hidden" id="hiddenUserID" value="<?php echo $row_rsChangeRsersStatus['UserID']; ?>" /></td>
+          <td colspan="5"><input name="hiddenUserID" type="hidden" id="hiddenUserID" value="<?php echo $rsChangeRsersStatus->getColumnVal('UserID'); ?>" /></td>
         </tr>
         <tr>
-          <td width="3%"><?php echo $row_rsChangeRsersStatus['UserID']; ?>.</td>
-          <td width="19%"><?php echo $row_rsChangeRsersStatus['UserEmail']; ?></td>
-          <td width="16%"><?php echo $row_rsChangeRsersStatus['UserFirstName']; ?> <?php echo $row_rsChangeRsersStatus['UserLastName']; ?></td>
+          <td width="3%"><?php echo $rsChangeRsersStatus->getColumnVal('UserID'); ?>.</td>
+          <td width="19%"><?php echo $rsChangeRsersStatus->getColumnVal('UserEmail'); ?></td>
+          <td width="16%"><?php echo $rsChangeRsersStatus->getColumnVal('UserFirstName'); ?> <?php echo $rsChangeRsersStatus->getColumnVal('UserLastName'); ?></td>
           <td width="18%"><label for="txtStatus"></label>
             <select name="txtStatus" id="txtStatus">
               <?php
-do {  
+while(!$rsStatus->atEnd()) { //dyn select
 ?>
-              <option value="<?php echo $row_rsStatus['statusID']?>"<?php if (!(strcmp($row_rsStatus['statusID'], $row_rsChangeRsersStatus['UserLavel']))) {echo "selected=\"selected\"";} ?>><?php echo $row_rsStatus['statusName']?></option>
+              <option value="<?php echo $rsStatus->getColumnVal('statusID')?>"<?php if (!(strcmp($rsStatus->getColumnVal('statusID'), $rsChangeRsersStatus->getColumnVal('UserLavel')))) {echo "selected=\"selected\"";} ?>><?php echo $rsStatus->getColumnVal('statusName')?></option>
               <?php
-} while ($row_rsStatus = mysql_fetch_assoc($rsStatus));
-  $rows = mysql_num_rows($rsStatus);
-  if($rows > 0) {
-      mysql_data_seek($rsStatus, 0);
-	  $row_rsStatus = mysql_fetch_assoc($rsStatus);
-  }
+  $rsStatus->moveNext();
+} //dyn select
+$rsStatus->moveFirst();
 ?>
             </select></td>
           <td width="44%"><input type="submit" name="button" id="button" value="Submit" /></td>
@@ -274,8 +202,3 @@ do {
 </div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($rsStatus);
-
-mysql_free_result($rsChangeRsersStatus);
-?>

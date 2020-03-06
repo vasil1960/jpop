@@ -1,6 +1,7 @@
 <?php require_once("../webassist/form_validations/wavt_scripts_php.php"); ?>
 <?php require_once("../webassist/form_validations/wavt_validatedform_php.php"); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
+<?php require_once("../webassist/email/WA_Email.php"); ?>
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   $WAFV_Redirect = "";
@@ -20,94 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   }
 }
 ?>
-<?php require_once("../webassist/email/mail_php.php"); ?>
-<?php require_once("../webassist/email/mailformatting_php.php"); ?>
 <?php
-if ((isset($_POST["txtSend"]) || isset($_POST["txtSend_x"])))     {
-  //WA Universal Email object="mail"
-  @session_write_close();
-  set_time_limit(0);
-  $EmailRef = "waue_contacts_Index_1";
-  $BurstSize = 200;
-  $BurstTime = 1;
-  $WaitTime = 1;
-  $GoToPage = "contacts_ThankYou.php";
-  $RecipArray = array();
-  $StartBurst = time();
-  $LoopCount = 0;
-  $TotalEmails = 0;
-  $RecipIndex = 0;
-  // build up recipients array
-  $CurIndex = sizeof($RecipArray);
-  $RecipArray[$CurIndex] = array();
-  $RecipArray[$CurIndex ][] = "ivilievltu@yahoo.com";
-  $RecipArray[$CurIndex ][] = "v.tsigov@gmail.com";
-  $TotalEmails += sizeof($RecipArray[$CurIndex]);
-  $RealWait = ($WaitTime<0.25)?0.25:($WaitTime+0.1);
-  $TimeTracker = Array();
-  $TotalBursts = floor($TotalEmails/$BurstSize);
-  $AfterBursts = $TotalEmails % $BurstSize;
-  $TimeRemaining = ($TotalBursts * $BurstTime) + ($AfterBursts*$RealWait);
-  if ($TimeRemaining < ($TotalEmails*$RealWait) )  {
-    $TimeRemaining = $TotalEmails*$RealWait;
+if (isset($_POST["txtSend"]) || isset($_POST["txtSend_x"]))     {  //WA Universal Email
+  $Email = new WA_Email("waue_contacts_Index_1");
+  $Email->Redirect = "contacts_ThankYou.php";
+  $Email->From = "Journal POP <ivilievltu@klaro-bg.com>";
+  $Email->BurstSize = "200";
+  $Email->BurstTime = "1";
+  $Email->WaitTime = "1";
+  $Email->CharSet = "UTF-8";
+  $Email->addTo("ivilievltu@yahoo.com");
+  $Email->addTo("v.tsigov@gmail.com");
+  $Email->addAttachment("../images/EmailLogo/logo.png");
+  $Email->BodyFile = "../webassist/email/waue_contacts_Index_1_body.php";
+  if (function_exists("rel2abs") && $Email->Redirect) $Email->Redirect = $Email->Redirect?rel2abs($Email->Redirect,dirname(__FILE__)):"";
+  for ($emailGroup=0; $emailGroup<sizeof($Email->To); $emailGroup++) {
+    $Email->Subject = "Message from contact form";
+    $Email->send($emailGroup);
   }
-  writeUEProgress($EmailRef,0,$TotalEmails,$TimeRemaining);
-  while ($RecipIndex < sizeof($RecipArray))  {
-    $EnteredValue = is_string($RecipArray[$RecipIndex][0]);
-    $CurIndex = 0;
-    while (($EnteredValue && $CurIndex < sizeof($RecipArray[$RecipIndex])) || (!$EnteredValue && $RecipArray[$RecipIndex][0])) {
-      $starttime = microtime_float();
-      if ($EnteredValue)  {
-        $RecipientEmail = $RecipArray[$RecipIndex][$CurIndex];
-      }  else  {
-        $RecipientEmail = $RecipArray[$RecipIndex][0][$RecipArray[$RecipIndex][2]];
-      }
-      $EmailsRemaining = ($TotalEmails- $LoopCount);
-      $BurstsRemaining = ceil(($EmailsRemaining-$AfterBursts)/$BurstSize);
-      $IntoBurst = ($EmailsRemaining-$AfterBursts) % $BurstSize;
-      if ($AfterBursts<$EmailsRemaining) $IntoBurst = 0;
-      $TimeRemaining = ($BurstsRemaining * $BurstTime * 60) + ((($AfterBursts<$EmailsRemaining)?$AfterBursts:$EmailsRemaining)*$RealWait) - (($AfterBursts>$EmailsRemaining)?0:($IntoBurst*$RealWait));
-      if ($TimeRemaining < ($EmailsRemaining*$RealWait) )  {
-        $TimeRemaining = $EmailsRemaining*$RealWait;
-      }
-      $CurIndex ++;
-      $LoopCount ++;
-      writeUEProgress($EmailRef,$LoopCount,$TotalEmails,round($TimeRemaining));
-      wa_sleep($WaitTime);
-      include("../webassist/email/waue_contacts_Index_1.php");
-      $endtime = microtime_float();
-      $TimeTracker[] =$endtime - $starttime;
-      $RealWait = array_sum($TimeTracker)/sizeof($TimeTracker);
-      if ($LoopCount % $BurstSize == 0 && $CurIndex < sizeof($RecipArray[$RecipIndex]))  {
-        $TimePassed = (time() - $StartBurst);
-        if ($TimePassed < ($BurstTime*60))  {
-          $WaitBurst = ($BurstTime*60) -$TimePassed;
-          wa_sleep($WaitBurst);
-        }
-        else  {
-          $TimeRemaining = ($TotalEmails- $LoopCount)*$RealWait;
-        }
-        $StartBurst = time();
-      }
-      if (!$EnteredValue)  {
-        $RecipArray[$RecipIndex][0] =  mysql_fetch_assoc($RecipArray[$RecipIndex][1]);
-      }
-    }
-    $RecipIndex ++;
-  }
-  @session_start();
-  $_SESSION[$EmailRef."_Status"] = $GLOBALS[$EmailRef."_Status"];
-  $_SESSION[$EmailRef."_Index"] = $GLOBALS[$EmailRef."_Index"];
-  $_SESSION[$EmailRef."_From"] = $GLOBALS[$EmailRef."_From"];
-  $_SESSION[$EmailRef."_To"] = $GLOBALS[$EmailRef."_To"];
-  $_SESSION[$EmailRef."_Subject"] = $GLOBALS[$EmailRef."_Subject"];
-  $_SESSION[$EmailRef."_Body"] = $GLOBALS[$EmailRef."_Body"];
-  $_SESSION[$EmailRef."_Header"] = $GLOBALS[$EmailRef."_Header"];
-  $_SESSION[$EmailRef."_Log"] = $GLOBALS[$EmailRef."_Log"];
-  if (function_exists("rel2abs")) $GoToPage = $GoToPage?rel2abs($GoToPage,dirname(__FILE__)):"";
-  if ($GoToPage!="")     {
-    header("Location: ".$GoToPage);
-  }
+  $Email->close();
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

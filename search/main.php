@@ -1,42 +1,25 @@
-<?php require_once('../Connections/localhost.php'); ?>
+<?php require_once('../Connections/localhost_i.php'); ?>
 <?php if (!session_id()) session_start(); ?>
 <?php require_once( "../webassist/file_manipulation/helperphp.php" ); ?>
 <?php require_once( "../webassist/security_assist/helper_php.php" ); ?>
-<?php require_once("../webassist/database_management/wa_appbuilder_php.php"); ?>
+<?php require_once('../webassist/mysqli/queryobj.php'); ?>
 <?php 
 if (!WA_Auth_RulePasses("Editors")){
 	WA_Auth_RestrictAccess("../users/users_LogIn.php");
 }?>
-<?php 
-// WA DataAssist Insert
-if ("" == "") // Trigger
-{
-  $WA_connection = $localhost;
-  $WA_table = "log";
-  $WA_sessionName = "searchlog";
-  $WA_redirectURL = "";
-  if (function_exists("rel2abs")) $WA_redirectURL = $WA_redirectURL?rel2abs($WA_redirectURL,dirname(__FILE__)):"";
-  $WA_keepQueryString = false;
-  $WA_fieldNamesStr = "logUser|logIP|logContent";
-  $WA_fieldValuesStr = "".$_SESSION['UserFirstName']  ." ".$_SESSION['UserEmail']  ."" . $WA_AB_Split . "".((isset($_SERVER["REMOTE_ADDR"]))?$_SERVER["REMOTE_ADDR"]:"")  ."" . $WA_AB_Split . "Enter main search site";
-  $WA_columnTypesStr = "',none,''|',none,''|',none,''";
-  $WA_fieldNames = explode("|", $WA_fieldNamesStr);
-  $WA_fieldValues = explode($WA_AB_Split, $WA_fieldValuesStr);
-  $WA_columns = explode("|", $WA_columnTypesStr);
-  $WA_connectionDB = $database_localhost;
-  mysql_select_db($WA_connectionDB, $WA_connection);
-  @session_start();
-  $insertParamsObj = WA_AB_generateInsertParams($WA_fieldNames, $WA_columns, $WA_fieldValues, -1);
-  $WA_Sql = "INSERT INTO `" . $WA_table . "` (" . $insertParamsObj->WA_tableValues . ") VALUES (" . $insertParamsObj->WA_dbValues . ")";
-  $MM_editCmd = mysql_query($WA_Sql, $WA_connection) or die(mysql_error());
-  $_SESSION[$WA_sessionName] = mysql_insert_id($WA_connection);
-  if ($WA_redirectURL != "")  {
-    $WA_redirectURL = str_replace("[Insert_ID]",$_SESSION[$WA_sessionName],$WA_redirectURL);
-    if ($WA_keepQueryString && $WA_redirectURL != "" && isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "" && sizeof($_POST) > 0) {
-      $WA_redirectURL .= ((strpos($WA_redirectURL, '?') === false)?"?":"&").$_SERVER["QUERY_STRING"];
-    }
-    header("Location: ".$WA_redirectURL);
-  }
+<?php
+if ("" === "") {
+  $InsertQuery = new WA_MySQLi_Query($localhost_i);
+  $InsertQuery->Action = "insert";
+  $InsertQuery->Table = "log";
+  $InsertQuery->bindColumn("logUser", "s", "".$_SESSION['UserFirstName']  ." ".$_SESSION['UserEmail']  ."", "WA_BLANK");
+  $InsertQuery->bindColumn("logIP", "s", "".((isset($_SERVER["REMOTE_ADDR"]))?$_SERVER["REMOTE_ADDR"]:"")  ."", "WA_BLANK");
+  $InsertQuery->bindColumn("logContent", "s", "Enter main search site", "WA_BLANK");
+  $InsertQuery->saveInSession("searchlog");
+  $InsertQuery->execute();
+  $InsertGoTo = "";
+  if (function_exists("rel2abs")) $InsertGoTo = $InsertGoTo?rel2abs($InsertGoTo,dirname(__FILE__)):"";
+  $InsertQuery->redirect($InsertGoTo);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
