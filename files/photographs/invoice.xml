@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InvoiceProDataContextState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BankAccounts>
+    <BankAccount>
+      <BankAccountID>1</BankAccountID>
+      <BankAcct>BG39UNCR70001508504180</BankAcct>
+      <BankCode>UNCRBGSF</BankCode>
+      <BankName>УниКредит Булбанк</BankName>
+    </BankAccount>
+  </BankAccounts>
+  <Configuration>
+    <Configuration>
+      <Key>PricesContainVAT</Key>
+      <Value>False</Value>
+    </Configuration>
+    <Configuration>
+      <Key>TaxRegistration</Key>
+      <Value>True</Value>
+    </Configuration>
+  </Configuration>
+  <DocumentDetails>
+    <DocumentDetail>
+      <DetailID>1</DetailID>
+      <ItemID>1</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>26755.750000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>5351.150000</VAT>
+      <DocumentID>1</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>2</DetailID>
+      <ItemID>2</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>100.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>20.000000</VAT>
+      <DocumentID>2</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>3</DetailID>
+      <ItemID>3</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>117.600000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>23.520000</VAT>
+      <DocumentID>3</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>4</DetailID>
+      <ItemID>4</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>250.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр</Measure>
+      <VAT>50.000000</VAT>
+      <DocumentID>4</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>5</DetailID>
+      <ItemID>5</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>900.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>180.000000</VAT>
+      <DocumentID>4</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>6</DetailID>
+      <ItemID>6</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>60.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр</Measure>
+      <VAT>12.000000</VAT>
+      <DocumentID>4</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>7</DetailID>
+      <ItemID>7</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>20.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>4.000000</VAT>
+      <DocumentID>4</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>8</DetailID>
+      <ItemID>8</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>7489.770000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>1497.954000</VAT>
+      <DocumentID>5</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>9</DetailID>
+      <ItemID>9</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>17837.170000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>3567.434000</VAT>
+      <DocumentID>6</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>10</DetailID>
+      <ItemID>10</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>4181.560000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>836.312000</VAT>
+      <DocumentID>7</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>11</DetailID>
+      <ItemID>11</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>6272.350000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>1254.470000</VAT>
+      <DocumentID>7</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>12</DetailID>
+      <ItemID>11</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>-5453.910000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure>бр.</Measure>
+      <VAT>-1090.782000</VAT>
+      <DocumentID>8</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>16</DetailID>
+      <ItemID>13</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>20.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure />
+      <VAT>4.000000</VAT>
+      <DocumentID>10</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>17</DetailID>
+      <ItemID>14</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>60.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure />
+      <VAT>12.000000</VAT>
+      <DocumentID>10</DocumentID>
+    </DocumentDetail>
+    <DocumentDetail>
+      <DetailID>18</DetailID>
+      <ItemID>16</ItemID>
+      <Qtty>1.000000</Qtty>
+      <SalePrice>360.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Measure />
+      <VAT>72.000000</VAT>
+      <DocumentID>10</DocumentID>
+    </DocumentDetail>
+  </DocumentDetails>
+  <DocumentFormats>
+    <DocumentFormat>
+      <DocumentFormatID>1</DocumentFormatID>
+      <Name>Стандартен</Name>
+    </DocumentFormat>
+    <DocumentFormat>
+      <DocumentFormatID>2</DocumentFormatID>
+      <Name>Документ с нулева ставка</Name>
+    </DocumentFormat>
+    <DocumentFormat>
+      <DocumentFormatID>3</DocumentFormatID>
+      <Name>Документ без начисляване на ДДС</Name>
+    </DocumentFormat>
+    <DocumentFormat>
+      <DocumentFormatID>4</DocumentFormatID>
+      <Name>Документ с произволно ДДС</Name>
+    </DocumentFormat>
+    <DocumentFormat>
+      <DocumentFormatID>5</DocumentFormatID>
+      <Name>Документ с произволна сума</Name>
+    </DocumentFormat>
+  </DocumentFormats>
+  <Documents>
+    <Document>
+      <DocumentID>1</DocumentID>
+      <DocNumber>0000000001</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-01-14T00:00:00</Date>
+      <PartnerID>1</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Николай Александров Божинов</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>София</DealPlace>
+      <DealDescription>покупка</DealDescription>
+      <DealTerms>договор</DealTerms>
+      <DealDate>2009-01-14T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>2</DocumentID>
+      <DocNumber>0000000002</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-01-21T00:00:00</Date>
+      <PartnerID>1</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Николай Александров Божинов</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>София</DealPlace>
+      <DealDescription>покупка</DealDescription>
+      <DealTerms>по договор</DealTerms>
+      <DealDate>2009-01-21T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>3</DocumentID>
+      <DocNumber>0000000003</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-01-21T00:00:00</Date>
+      <PartnerID>1</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Николай Александров Божинов</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>София</DealPlace>
+      <DealDescription>покупка</DealDescription>
+      <DealTerms>по договор</DealTerms>
+      <DealDate>2009-01-21T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>4</DocumentID>
+      <DocNumber>0000000004</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-02-04T00:00:00</Date>
+      <PartnerID>2</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>проф. Георги Тасев</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>гр. София</DealPlace>
+      <DealTerms>договор</DealTerms>
+      <DealDate>2009-02-04T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>5</DocumentID>
+      <DocNumber>0000000005</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-03-06T00:00:00</Date>
+      <PartnerID>3</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Стефка Стоянова Камчева</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>гр. София</DealPlace>
+      <DealDescription>покупка</DealDescription>
+      <DealTerms>договор</DealTerms>
+      <DealDate>2009-03-06T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>6</DocumentID>
+      <DocNumber>0000000006</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-07-01T00:00:00</Date>
+      <PartnerID>1</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Николай Александров Божинов</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>София</DealPlace>
+      <DealDescription>покупка</DealDescription>
+      <DealTerms>по договор</DealTerms>
+      <DealDate>2009-07-01T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>7</DocumentID>
+      <DocNumber>0000000007</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2009-09-09T00:00:00</Date>
+      <PartnerID>3</PartnerID>
+      <SrcDocNumber>0</SrcDocNumber>
+      <SrcDocDate xsi:nil="true" />
+      <Recipient>Стефка Стоянова Камчева</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>гр. София</DealPlace>
+      <DealTerms>по договор</DealTerms>
+      <DealDate>2009-09-09T00:00:00</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>8</DocumentID>
+      <DocNumber>0000000008</DocNumber>
+      <TypeID>3</TypeID>
+      <Date>2009-09-30T11:58:03.59</Date>
+      <PartnerID>3</PartnerID>
+      <SrcDocNumber>0000000007</SrcDocNumber>
+      <SrcDocDate>2009-09-09T00:00:00</SrcDocDate>
+      <Recipient>Стефка Стоянова Камчева</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>гр. София</DealPlace>
+      <DealDescription>Доставка на технологично оборудване</DealDescription>
+      <DealTerms>по договор</DealTerms>
+      <DealDate>2009-09-30T11:58:03.63</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+    <Document>
+      <DocumentID>10</DocumentID>
+      <DocNumber>0000000009</DocNumber>
+      <TypeID>1</TypeID>
+      <Date>2010-04-14T09:25:41.9</Date>
+      <PartnerID>2</PartnerID>
+      <SrcDocDate>2010-04-14T09:25:42.217</SrcDocDate>
+      <Recipient>проф. Георги Тасев</Recipient>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Publisher>инж. Васил Илиев Цигов</Publisher>
+      <DealPlace>гр. София</DealPlace>
+      <DealDescription>продажба на услуга</DealDescription>
+      <DealTerms />
+      <DealDate>2010-04-14T09:25:42.217</DealDate>
+      <SequenceChannel>1</SequenceChannel>
+      <BankAccountID>1</BankAccountID>
+      <DocumentFormatID>1</DocumentFormatID>
+      <SrcProtocolDate xsi:nil="true" />
+      <DocumentSum xsi:nil="true" />
+      <EndDate xsi:nil="true" />
+    </Document>
+  </Documents>
+  <DocumentTypes>
+    <DocumentType>
+      <TypeID>1</TypeID>
+      <Name>Фактура</Name>
+      <SequenceChannel>1</SequenceChannel>
+    </DocumentType>
+    <DocumentType>
+      <TypeID>2</TypeID>
+      <Name>Дебитно известие</Name>
+      <SequenceChannel>1</SequenceChannel>
+    </DocumentType>
+    <DocumentType>
+      <TypeID>3</TypeID>
+      <Name>Кредитно известие</Name>
+      <SequenceChannel>1</SequenceChannel>
+    </DocumentType>
+    <DocumentType>
+      <TypeID>4</TypeID>
+      <Name>Стокова Разписка</Name>
+      <SequenceChannel>2</SequenceChannel>
+    </DocumentType>
+    <DocumentType>
+      <TypeID>5</TypeID>
+      <Name>Проформа фактура</Name>
+      <SequenceChannel>3</SequenceChannel>
+    </DocumentType>
+    <DocumentType>
+      <TypeID>6</TypeID>
+      <Name>Протокол</Name>
+      <SequenceChannel>4</SequenceChannel>
+    </DocumentType>
+  </DocumentTypes>
+  <ItemGroups>
+    <ItemGroup>
+      <GroupID>1</GroupID>
+      <Code>AAA</Code>
+      <Name>Основна група</Name>
+      <VATOperation xsi:nil="true" />
+    </ItemGroup>
+  </ItemGroups>
+  <Items>
+    <Item>
+      <ItemID>1</ItemID>
+      <Code />
+      <Name>Авансово плащане за доставка на оборудване за преч. станция</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>26755.750000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>2</ItemID>
+      <Code />
+      <Name>Геодезична услуга за обект в УПИ IX-573 СО"Овча купел"</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>100.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>3</ItemID>
+      <Code />
+      <Name>Публикуване на обява във вестник Нощен труд бр.3 / 21.01.2009 год.</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>117.600000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>4</ItemID>
+      <Code />
+      <Name>Поддържане на интернет страница за 1 год.</Name>
+      <Barcode />
+      <Measure>бр</Measure>
+      <SalePrice>250.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>5</ItemID>
+      <Code />
+      <Name>Изработване на интернет страница</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>900.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>6</ItemID>
+      <Code />
+      <Name>Хостинг за 1 год.</Name>
+      <Barcode />
+      <Measure>бр</Measure>
+      <SalePrice>60.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>7</ItemID>
+      <Code />
+      <Name>Регистрация на домейн за 1 год.</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>20.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>8</ItemID>
+      <Code />
+      <Name>Авансово плащане по чл.5 и чл.6 от договор за доставка на технол. оборудване на пречиствателна станция за 90 ЕЖ - (4595.35 евро x 1.95583 лв. за 1 евро)</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>7489.770000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>9</ItemID>
+      <Code />
+      <Name>Доплащане по т. 3 от договор за доставка и монтаж на технологическо оборудване за пречиствателна станция от 12.01.2009 год. (9 120 евро Х 1.95583)</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>17837.170000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>10</ItemID>
+      <Code />
+      <Name>Авансово плащане по чл.5 от договор за доставка на технол. оборудване на пречиствателна станция за 90 ЕЖ - (2138 евро x 1.95583 лв. за 1 евро)</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>4181.560000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>11</ItemID>
+      <Code />
+      <Name>Авансово плащане по чл.5 от договор за монтаж на технол. оборудване на пречиствателна станция за 90 ЕЖ - (3207 евро x 1.95583 лв. за 1 евро)</Name>
+      <Barcode />
+      <Measure>бр.</Measure>
+      <SalePrice>6272.350000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Permit />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+    </Item>
+    <Item>
+      <ItemID>12</ItemID>
+      <Code />
+      <Name>Частично авансово плащане по чл.5 от договор за монтаж на технол. оборудване на пречиствателна станция за 90 ЕЖ - (3207 евро x 1.95583 лв. за 1 евро)</Name>
+      <Measure>бр.</Measure>
+      <SalePrice>-5453.910000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+      <Name2>Chastichno avansovo plashtane po chl.5 ot dogovor za montazh na tehnol. oborudvane na prechistvatelna stantsiya za 90 EZH - (3207 evro x 1.95583 lv. za 1 evro)</Name2>
+      <Measure2>br.</Measure2>
+    </Item>
+    <Item>
+      <ItemID>13</ItemID>
+      <Code />
+      <Name>Регистрация на домейн  www.sskb.info за 1год.</Name>
+      <Measure />
+      <SalePrice>20.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+      <Name2>Registratsiya na domeyn  www.sskb.info za 1god.</Name2>
+      <Measure2 />
+    </Item>
+    <Item>
+      <ItemID>14</ItemID>
+      <Code />
+      <Name>Хостване на домейн www.sskb.info за 1 год.</Name>
+      <Measure />
+      <SalePrice>60.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+      <Name2>Hostvane na domeyn www.sskb.info za 1 god.</Name2>
+      <Measure2 />
+    </Item>
+    <Item>
+      <ItemID>15</ItemID>
+      <Code />
+      <Name>Поддържане и доразработване на интернет страница www.sskb.info за 1 год.</Name>
+      <Measure />
+      <SalePrice>720.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+      <Name2>Poddurzhane i dorazrabotvane na internet stranitsa www.sskb.info za 1 god.</Name2>
+      <Measure2 />
+    </Item>
+    <Item>
+      <ItemID>16</ItemID>
+      <Code />
+      <Name>Поддържане и доразработване на интернет страница www.sskb.info за 1/2 год.</Name>
+      <Measure />
+      <SalePrice>360.000000</SalePrice>
+      <FixedPrice>0.000000</FixedPrice>
+      <EcoTax>0.000000</EcoTax>
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>false</Visible>
+      <VatRateID>1</VatRateID>
+      <Name2>Poddurzhane i dorazrabotvane na internet stranitsa www.sskb.info za 1/2 god.</Name2>
+      <Measure2 />
+    </Item>
+  </Items>
+  <MyCompany>
+    <MyCompany>
+      <CompanyID>1</CompanyID>
+      <Name>КЛАРО БГ ООД</Name>
+      <ContactName>Васил Илиев Цигов</ContactName>
+      <Country />
+      <City>София</City>
+      <Address>гр. София 1040, бул. Драган Цанков 36, СТЦ Интерпред, бл. Б, ет. 3</Address>
+      <Phone>0885881960</Phone>
+      <Bulstat>200338769</Bulstat>
+      <VatId>BG200338769</VatId>
+    </MyCompany>
+  </MyCompany>
+  <PartnerGroups>
+    <PartnerGroup>
+      <GroupID>1</GroupID>
+      <Code>AAA</Code>
+      <Name>Основна група</Name>
+    </PartnerGroup>
+  </PartnerGroups>
+  <Partners>
+    <Partner>
+      <PartnerID>1</PartnerID>
+      <Name>"ГЛОРИЯ ПАЛАС" ООД</Name>
+      <ContactName>Николай Александров Божинов</ContactName>
+      <Country />
+      <City>София</City>
+      <Address>София 1614, район Овча Купел, бул. Никола Петков 51</Address>
+      <Phone>(02) 915 77 55</Phone>
+      <Bulstat>831036162</Bulstat>
+      <VatId>BG831036162</VatId>
+      <BankName />
+      <BankCode />
+      <BankAccount />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>true</Visible>
+    </Partner>
+    <Partner>
+      <PartnerID>2</PartnerID>
+      <Name>ССКБ</Name>
+      <ContactName>проф. Георги Тасев</ContactName>
+      <Country />
+      <City>гр. София 1000</City>
+      <Address>ул. Раковски 108</Address>
+      <Phone>(02)9884075</Phone>
+      <Bulstat>121076649</Bulstat>
+      <VatId>BG121076649</VatId>
+      <BankName />
+      <BankCode />
+      <BankAccount />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>true</Visible>
+    </Partner>
+    <Partner>
+      <PartnerID>3</PartnerID>
+      <Name>Холандия Риал Естейт ООД</Name>
+      <ContactName>Стефка Стоянова Камчева</ContactName>
+      <Country />
+      <City>София</City>
+      <Address>бул. Витоша 180, ет. 2, ап. 1а</Address>
+      <Phone />
+      <Bulstat>131454824</Bulstat>
+      <VatId>BG131454824</VatId>
+      <BankName />
+      <BankCode />
+      <BankAccount />
+      <Priority>false</Priority>
+      <GroupID>1</GroupID>
+      <Visible>true</Visible>
+    </Partner>
+  </Partners>
+  <PaymentTypes>
+    <PaymentType>
+      <PaymentTypeID>1</PaymentTypeID>
+      <Name>В брой</Name>
+    </PaymentType>
+    <PaymentType>
+      <PaymentTypeID>2</PaymentTypeID>
+      <Name>По сметка</Name>
+    </PaymentType>
+    <PaymentType>
+      <PaymentTypeID>3</PaymentTypeID>
+      <Name>С карта</Name>
+    </PaymentType>
+    <PaymentType>
+      <PaymentTypeID>4</PaymentTypeID>
+      <Name>Комбинирано</Name>
+    </PaymentType>
+  </PaymentTypes>
+  <SequenceControl>
+    <SequenceControl>
+      <SequenceChannel>1</SequenceChannel>
+      <SequenceFormat>[#]</SequenceFormat>
+      <LastGeneratedNumber>9</LastGeneratedNumber>
+      <NumericLength>10</NumericLength>
+    </SequenceControl>
+    <SequenceControl>
+      <SequenceChannel>2</SequenceChannel>
+      <SequenceFormat>[#]</SequenceFormat>
+      <LastGeneratedNumber>0</LastGeneratedNumber>
+      <NumericLength>10</NumericLength>
+    </SequenceControl>
+    <SequenceControl>
+      <SequenceChannel>3</SequenceChannel>
+      <SequenceFormat>[#]</SequenceFormat>
+      <LastGeneratedNumber>0</LastGeneratedNumber>
+      <NumericLength>10</NumericLength>
+    </SequenceControl>
+    <SequenceControl>
+      <SequenceChannel>4</SequenceChannel>
+      <SequenceFormat>[#]</SequenceFormat>
+      <LastGeneratedNumber>0</LastGeneratedNumber>
+      <NumericLength>10</NumericLength>
+    </SequenceControl>
+  </SequenceControl>
+  <System>
+    <SystemTable>
+      <Version>1.02.007  </Version>
+      <CompanyName>КЛАРО БГ ООД</CompanyName>
+      <ProductID>3</ProductID>
+    </SystemTable>
+  </System>
+  <VatRates>
+    <VatRate>
+      <VatRateID>1</VatRateID>
+      <Code>A</Code>
+      <Description>Основна ДДС група</Description>
+      <Rate>20.000000</Rate>
+    </VatRate>
+    <VatRate>
+      <VatRateID>2</VatRateID>
+      <Code>B</Code>
+      <Description>Туризъм</Description>
+      <Rate>7.000000</Rate>
+    </VatRate>
+    <VatRate>
+      <VatRateID>3</VatRateID>
+      <Code>C</Code>
+      <Description>Лекарства и др.</Description>
+      <Rate>0.000000</Rate>
+    </VatRate>
+  </VatRates>
+</InvoiceProDataContextState>

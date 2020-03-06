@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<site SitePrefVersionMajor="11" SitePrefVersionMinor="2">
+    <localinfo sitename="ideas.klaro-bg.com" ftporrdsserver="FALSE" localroot="D:%5CWebsite%5Cideas.klaro-bg.com%5C" assetfolder="D:%5CWebsite%5Cideas.klaro-bg.com%5CSpryAssets%5C" imagefolder="" spacerfilepath="" refreshlocal="TRUE" rewritedocrellinks="FALSE" cache="TRUE" httpaddress="http://forestry-ideas.info/" relativeTo="DOCUMENT" caseSensitiveLinks="FALSE" curserver="webserver"/>
+    <designnotes usedesignnotes="TRUE" sharedesignnotes="FALSE"/>
+    <sitemap homepage="" pagesperrow="200" columnwidth="125" showdependentfiles="FALSE" showpagetitles="FALSE" showhiddenfiles="FALSE"/>
+    <fileviewcolumns sharecolumns="FALSE">
+        <column name="Local%20Files" align="left" show="TRUE" share="FALSE" builtin="TRUE" localwidth="80" remotewidth="196"/>
+        <column name="Notes" align="center" show="FALSE" share="FALSE" builtin="TRUE" localwidth="36" remotewidth="36"/>
+        <column name="Size" align="right" show="TRUE" share="FALSE" builtin="TRUE" localwidth="-2" remotewidth="40"/>
+        <column name="Type" align="left" show="TRUE" share="FALSE" builtin="TRUE" localwidth="60" remotewidth="60"/>
+        <column name="Modified" align="left" show="TRUE" share="FALSE" builtin="TRUE" localwidth="102" remotewidth="102"/>
+        <column name="Checked%20Out%20By" align="left" show="TRUE" share="FALSE" builtin="TRUE" localwidth="-1" remotewidth="-1"/>
+</fileviewcolumns>
+    <serverlist>
+        <server servermodel="PHP%20MySQL" servertype="remoteAndTestingServer" weburl="http://forestry-ideas.info/" connectionsmigrated="FALSE" serverobjectsversion="1" defaultdoctype="HTML" accesstype="ftp" host="www.klaro-bg.com" remoteroot="/public_html/forestry-ideas.info/" name="klaro-bg" maintainSyncInfo="TRUE" autoUpload="FALSE" user="klarobg" pw="4B6D637573383A3B396B71" savePW="TRUE" enablecheckin="FALSE" checkoutname="" checkoutwhenopen="TRUE" emailaddress="" usefirewall="FALSE" usepasv="TRUE" useSFTP="FALSE" useIPv6="FALSE" useftpoptimization="TRUE" usealternaterename="FALSE" pathNameCharacterSet="windows-1251" testsvrbinaccesstype="none"/>
+</serverlist>
+    <cloaking enabled="TRUE" patterns="FALSE">
+        <cloakedfolder folder="dw_php_codehinting.config"/>
+        <cloakedfolder folder="_work/"/>
+        <cloakedfolder folder="Arhiv/"/>
+        <cloakedpattern pattern=".fla"/>
+        <cloakedpattern pattern=".psd"/>
+</cloaking>
+    <contributorintegration enabled="FALSE"/>
+</site>

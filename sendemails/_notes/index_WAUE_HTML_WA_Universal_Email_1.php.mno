@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="WA_Forms" value="file:///D|/website/Journal JPOP/sendemails/index.php;" />
+	<infoitem key="UD_rsEmails" value="name:id;datatype:int,name:Name;datatype:string,name:Email;datatype:string" />
+</info>

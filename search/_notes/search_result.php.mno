@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsSearch" value="name:mscrID;datatype:int,name:mscrAutorID;datatype:int,name:mscrCoverLeter;datatype:blob,name:mscrFullTitle;datatype:blob,name:mscrAbstract;datatype:blob,name:mscrKeywords;datatype:blob,name:UserID;datatype:int,name:UserEmail;datatype:string,name:FullAuthorName;datatype:string,name:UserLastName;datatype:string,name:mscrCode;datatype:int,name:mscrUpldDate;datatype:string,name:mscrCodeU;datatype:string" />
+</info>

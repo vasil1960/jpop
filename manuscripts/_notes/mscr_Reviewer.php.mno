@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsForReviewer1" value="name:mscrID;datatype:3,name:mscrAutorID;datatype:3,name:mscrFullTitle;datatype:252,name:mscrCodeU;datatype:253,name:mscrUpldDate;datatype:253,name:mscrReviewer_1;datatype:253,name:mscrFileReviewer_1;datatype:253,name:mscrDateFileReviewer_1;datatype:253,name:mnscConfirmReviewer_1;datatype:253,name:mscrChecklist_1;datatype:253,name:mnscrDateConfirm_1;datatype:253" />
+	<infoitem key="UD_rsForReviewer2" value="name:mscrID;datatype:3,name:mscrAutorID;datatype:3,name:mscrFullTitle;datatype:252,name:mscrCodeU;datatype:253,name:mscrUpldDate;datatype:253,name:mscrReviewer_2;datatype:253,name:mscrFileReviewer_2;datatype:253,name:mscrDateFileReviewer_2;datatype:253,name:mnscConfirmReviewer_2;datatype:253,name:mscrChecklist_2;datatype:253,name:mnscrDateConfirm_2;datatype:253" />
+	<infoitem key="UD_rsForReviewer3" value="name:mscrID;datatype:3,name:mscrAutorID;datatype:3,name:mscrFullTitle;datatype:252,name:mscrCodeU;datatype:253,name:mscrUpldDate;datatype:253,name:mscrReviewer_3;datatype:253,name:mscrFileReviewer_3;datatype:253,name:mscrDateFileReviewer_3;datatype:253,name:mnscConfirmReviewer_3;datatype:253,name:mscrChecklist_3;datatype:253,name:mnscrDateConfirm_3;datatype:253" />
+</info>

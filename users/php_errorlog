@@ -1,0 +1,3 @@
+[17-Jul-2014 14:46:21 Europe/Sofia] PHP Parse error:  syntax error, unexpected '}' in /www/klaro-bg.com/jpop/root/users/users_Index_Lavel.php on line 42
+[17-Jul-2014 16:39:11 Europe/Sofia] PHP Parse error:  syntax error, unexpected '}' in /www/klaro-bg.com/jpop/root/users/users_Index_Lavel.php on line 42
+[06-Nov-2014 12:02:06 Europe/Sofia] PHP Fatal error:  Too many connections in /www/klaro-bg.com/jpop/root/Connections/localhost.php on line 9

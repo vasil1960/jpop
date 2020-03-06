@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsReminder_2" value="name:mscrID;datatype:3,name:mscrFullTitle;datatype:252,name:mscrCodeU;datatype:253,name:mscrReviewer_2;datatype:253,name:UserID;datatype:3,name:EmailReviewer_2;datatype:253,name:UserFirstName;datatype:253,name:UserLastName;datatype:253,name:mnscrDateConfirm_2;datatype:253,name:mscrDateToReviewer_2;datatype:253" />
+</info>

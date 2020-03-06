@@ -1,0 +1,15 @@
+
+[account]
+User      = negm0
+Pwd       = negm0
+Uniq      = 1
+AU        = osn
+Group     = 1
+MonLevel  = 0
+#EndDate = 2011/01/05
+CAID	  = 0604
+chid           = 0604:00ba,00a5
+#Services  = show
+
+
+

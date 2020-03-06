@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsReviewer" value="name:UserID;datatype:int,name:FullName;datatype:string,name:UserLavel;datatype:int,name:statusID;datatype:int" />
+	<infoitem key="UD_rsMnscrpt" value="name:mscrID;datatype:int,name:mscrFullTitle;datatype:blob,name:mscrCodeU;datatype:string,name:mscrUpldDate;datatype:string,name:AutorFullName;datatype:string,name:mscrReviewerFullName_1;datatype:string,name:mscrReviewerFullName_2;datatype:string,name:mscrReviewerFullName_3;datatype:string,name:mscrAutorID;datatype:int,name:mscrReviewer_1;datatype:string,name:mscrReviewer_2;datatype:string,name:mscrReviewer_3;datatype:string,name:UserEmail;datatype:string,name:mscrFileName;datatype:string" />
+	<infoitem key="UD_rsReviewer_1" value="name:UserID;datatype:int,name:FullName;datatype:string,name:UserLavel;datatype:int,name:statusID;datatype:int,name:UserEmail;datatype:string,name:ReviewerFullName;datatype:string" />
+	<infoitem key="UD_rsReviewer_2" value="name:UserID;datatype:int,name:FullName;datatype:string,name:UserLavel;datatype:int,name:statusID;datatype:int,name:UserEmail;datatype:string,name:ReviewerFullName;datatype:string" />
+	<infoitem key="UD_rsReviewer_3" value="name:UserID;datatype:int,name:FullName;datatype:string,name:UserLavel;datatype:int,name:statusID;datatype:int,name:UserEmail;datatype:string,name:ReviewerFullName;datatype:string" />
+</info>

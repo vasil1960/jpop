@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsDirectReject" value="name:mscrID;datatype:3,name:mscrFullTitle;datatype:252,name:mscrCodeU;datatype:253,name:mscrRecommendation_1;datatype:253,name:mscrRecommendation_2;datatype:253,name:mscrRecommendation_3;datatype:253,name:UserFirstName;datatype:253,name:UserLastName;datatype:253,name:UserEmail;datatype:253" />
+</info>
